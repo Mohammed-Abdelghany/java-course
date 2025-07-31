@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,7 +24,16 @@ public class Main {
 //        sheet1.capitalOrSmall();
 //        sheet1.capitalToSmall();
 
+        //Assign 3
+
+//        sheet1.calculator();
+//        sheet1.DigitOddOrEven();
+//        sheet1.coordinateOfPoints();
+//        sheet1.convertAge();
 
 
 
-    }}
+    }
+
+
+}
