@@ -1,6 +1,6 @@
 package datastructure.linkedlist.single;
 
 public class Node {
-    int data;
-    Node next;
+    public double data;
+    public Node next;
 }
