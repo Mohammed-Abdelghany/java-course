@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class sheet1 {
@@ -210,5 +211,35 @@ public void convertAge(){
         long days=age-(months*30+years*365);
         System.out.println(years+" years"+"\n"+months+" months"+"\n"+days+" days");
 }
+public void interval() {
+        double input = getDoubleScanner();
+        if (input < 0) {
+            System.out.println("Out of Intervals");
+        } else if (input >= 0 && input <= 25) {
+            System.out.println("Interval [0,25]");
+        } else if (input > 25 && input <= 50) {
+            System.out.println("Interval (25,50]");
+        } else if (input > 50 && input <= 75) {
+            System.out.println("Interval (50,75]");
+        } else if (input > 75 && input <= 100) {
+            System.out.println("Interval (75,100]");
+        } else {
+            System.out.println("Out of Intervals");
+        }
+    }
+    public void T_sort(){
+        String[] arr =getStringScanner().split(" ");
+        long[] nums = {Long.parseLong(arr[0]), Long.parseLong(arr[1]), Long.parseLong(arr[2])};
+
+        long[] original = nums.clone();
+
+        Arrays.sort(nums);
+
+        for (long n : nums) System.out.println(n);
+
+        System.out.println();
+
+        for (long n : original) System.out.println(n);
+    }
 
 }
