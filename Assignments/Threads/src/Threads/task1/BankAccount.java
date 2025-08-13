@@ -1,6 +1,6 @@
 package Threads.task1;
 
-public class BankAccount extends Thread {
+public class BankAccount  {
     private double balance;
     public BankAccount(double balance) {
         this.balance = balance;
