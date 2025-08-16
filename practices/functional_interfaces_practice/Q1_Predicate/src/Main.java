@@ -7,7 +7,6 @@ import java.util.function.Predicate;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
 //           Legacy code using anonymous class
 
 //        Scanner sc = new Scanner(System.in);
