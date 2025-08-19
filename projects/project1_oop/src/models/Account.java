@@ -5,7 +5,7 @@ public class Account {
     private double balance;
     private String phoneNumber;
     private Integer age;
-    public Account(String username, String password, double balance, String phoneNumber, Integer age) {
+    public Account(String username, String password,String phoneNumber, Integer age,double balance) {
         this.username = username;
         this.password = password;
         this.balance = 0;

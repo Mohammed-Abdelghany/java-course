@@ -5,10 +5,7 @@ import models.EWallet;
 import validations.CreateAccountValidation;
 import validations.LoginValidation;
 public class AccountServiceImp implements AccountServiceInter {
-    private final EWallet ewallet;
-    public AccountServiceImp(EWallet ewallet) {
-        this.ewallet = ewallet;
-    }
+    private EWallet eWallet = new EWallet();
     public boolean createAccount(Account account) {
         var validator = new CreateAccountValidation();
         var errors = validator.validate(account);
@@ -17,11 +14,11 @@ public class AccountServiceImp implements AccountServiceInter {
                     System.out.println(error.getField() + ": " + error.getMessage()));
             return false;
         }
-        ewallet.addAccount(account);
+        eWallet.addAccount(account);
         return true;
     }
     public boolean login(Account account) {
-        var validator = new LoginValidation(ewallet);
+        LoginValidation validator = new LoginValidation(eWallet);
         var errors = validator.validate(account);
 
         if (!errors.isEmpty()) {
@@ -31,4 +28,12 @@ public class AccountServiceImp implements AccountServiceInter {
         }
         return true;
     }
+    public EWallet getEWallet() {
+        return eWallet;
+    }
+    public Account getAccount(String email) {
+        return eWallet.findAccountByUsername(email);
+    }
+
+
 }
