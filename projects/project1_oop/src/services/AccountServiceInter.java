@@ -5,8 +5,6 @@ public interface AccountServiceInter {
     public boolean login(Account account);
 
 
-//    boolean deposit(Account account, double money);
-//    int withDraw(Account account, double money);
-//    int transfer(Account account, String userNameAccountTransfer, double money);
-//    Account getAccount(Account account);
+    boolean deposit(Account account, double money);
+    int withDraw(Account account, double money);
 }

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class AppServiceImpl implements AppServiceInter {
     private Scanner scanner = new Scanner(System.in);
+    Account account = null;
 
     public AppServiceImpl() {
     }
@@ -16,16 +17,32 @@ public class AppServiceImpl implements AppServiceInter {
 
     @Override
     public void startApp() {
+        int count = 3;
+        while (count>=0) {
         System.out.println("Welcome sir :) ");
         System.out.println("Please Choose ");
         System.out.println("1. Sign Up  2. Login  3. Exit");
         int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                signUp();
-                break;
+            switch (choice) {
+                case 1:
+                    signUp();
+                    break;
+                case 2:
+                    login();
+                    break;
+                    case 3:
+                    System.out.println("Exiting the application. Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("pls enter a valid choice");
+                    if(count==0){
+                        System.out.println("You have exceeded the maximum number of attempts. Exiting the application.");
+                        System.exit(0);
+                    }
+                    System.out.println("You have " + (count) + " attempts left");
+                    count--;
+            }
         }
-
 
     }
 
@@ -62,7 +79,6 @@ public class AppServiceImpl implements AppServiceInter {
 
     public void login() {
         System.out.println("Welcome to Login");
-        Account account = null;
         String username = null;
         do {
             System.out.println("Please Enter Username");
@@ -78,5 +94,38 @@ public class AppServiceImpl implements AppServiceInter {
         System.out.println("Please choose an option:");
         System.out.println("1. View Balance 2. Deposit 3. Withdraw 4. Transfer 5. Logout");
 
+    }
+    public void deposit() {
+        boolean flag = false;
+        while (!flag) {
+        System.out.println("Welcome to Deposit");
+        System.out.println("Please Enter Amount to Deposit");
+        double amount = scanner.nextDouble();
+        if (accountService.deposit(account, amount)) {
+            accountService.deposit(account, amount);
+            System.out.println("Deposit successful! New balance: " + account.getBalance());
+            flag = true;
+        } else {
+            System.out.println("Deposit failed. Please try again.");
+        }
+        }
+
+    }
+    public void withdraw() {
+        boolean flag = false;
+        while (!flag) {
+        System.out.println("Welcome to Withdraw");
+        System.out.println("Please Enter Amount to Withdraw");
+        double amount = scanner.nextDouble();
+        int result = accountService.withDraw(account, amount);
+        if (result == 0) {
+            System.out.println("Withdrawal successful! New balance: " + account.getBalance());
+            flag = true;
+        } else if (result == -1) {
+            System.out.println("Withdrawal failed. Amount must be greater than zero.");
+        } else if (result == -2) {
+            System.out.println("Withdrawal failed. Insufficient balance.");
+        }
+        }
     }
 }
